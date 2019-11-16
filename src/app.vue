@@ -1,42 +1,53 @@
 <template>
   <div id="app">
-    
-    <div v-show="side"><Header></Header> </div>
+    <!-- <Header></Header> -->
+    <down v-show="frg" @downShow="show"></down>
     <router-view></router-view>
     <Footer></Footer>
   </div>
 </template>
 <script>
-
 import Footer from "./view/footer.vue";
-import Header from './view/header.vue'
+import Down from "./view/down.vue";
 import router from "./router/router";
 export default {
   data() {
     return {
       msg: "77777",
-      frg: true
+      frg: false,
+
     };
   },
   methods: {
     downClick() {
-      this.frg = false;
+      // this.frg = false;
+    },
+    show(){
+      this.frg=false
     }
   },
-  computed:{
-      side(){
-        //  
-             console.log((this.$route.path==='/home'))
-          if(this.$route.path==='/home'){
-              return false
-          }else{
-              return true
-          }
-      }
+  mounted(){
+    // this.route=this.$route
+  },
+  computed: {
+    side() {}
+  },
+  
+  watch: {
+    "$route":{
+      handler(){
+        if(this.$route.path==='/home'){
+          this.frg=true
+        }else{
+          this.frg=false
+        }
+      },
+      deep:true
+    }
   },
   router,
   components: {
-      Header,
+    Down,
     Footer
   }
 };
