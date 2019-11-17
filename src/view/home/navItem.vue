@@ -1,6 +1,6 @@
 <template>
-    <a href="">
-        <span></span>
+    <a href="javascript:;">
+        <span style="background-position: 0px 0"></span>
         <p>
             <slot></slot>
         </p>
@@ -24,7 +24,8 @@ export default {
         width: 55px;
         height: 55px;
         display: inline-block;
-        background: url(http://m.800pharm.com/images/wap/icon_index.png) no-repeat -330px 0;
+        background-image: url(http://m.800pharm.com/images/wap/icon_index.png);
+        background-repeat: no-repeat;
         background-size: 800%;
     }
     }

@@ -14,7 +14,7 @@ export default {
   data() {
     return {
       msg: "77777",
-      frg: false,
+      frg: true,
 
     };
   },
