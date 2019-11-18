@@ -4,7 +4,15 @@
     width: 18px;
     height: 3px;
     opacity: 1;
+ 
 }
 .mint-swipe-indicators>.mint-swipe-indicator.is-active{
     background: #e6186f;
+}
+
+.content>.mint-swipe>.mint-swipe-indicators{
+   transform: translateY(30px);
+}
+.content .mint-swipe-indicator{
+    background-color: #dedede;
 }

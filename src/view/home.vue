@@ -34,7 +34,25 @@
         </div>
         <limit></limit>
         <buying-wrapper></buying-wrapper>
-        
+        <tab-cut></tab-cut>
+        <conpon></conpon>
+        <satr></satr>
+        <changjian></changjian>
+        <Inform></Inform>
+        <div>1</div>
+        <div>1</div>
+        <div>1</div>
+        <div>1</div>
+        <div>1</div>
+        <div>1</div>
+        <div>1</div>
+        <div>1</div>
+        <div>1</div>
+        <div>1</div>
+        <div>1</div>
+        <div>1</div>
+        <div>1</div>
+        <div>1</div>
    </div>
    
 </template>
@@ -45,6 +63,11 @@ import SlideNav from './home/slideNav.vue'
 import Fouce from './home/focus.vue'
 import Limit from './home/limit.vue'
 import BuyingWrapper from './home/buying_pro_wrapper.vue'
+import TabCut from './home/tabCut.vue'
+import Conpon from './home/coupon.vue'
+import Satr from './home/star.vue'
+import Changjian from './home/changjian.vue'
+import Inform from'./home/inform.vue'
 export default {
     data(){
         return {
@@ -108,7 +131,12 @@ export default {
         Header,
         Fouce,
         Limit,
-        BuyingWrapper
+        BuyingWrapper,
+        TabCut,
+        Conpon,
+        Satr,
+        Changjian,
+        Inform
     },
     mounted(){
         this.slideNav=this.$refs.slideNav
@@ -120,7 +148,7 @@ export default {
     @import url('../assets/sass/min-swipe.scss');
     .home{
         position: relative;
-        
+        padding-bottom: 49px;
         .left{
             // width: 63px;
             height: 30px;
