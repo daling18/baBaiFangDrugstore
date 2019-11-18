@@ -32,6 +32,9 @@
             </div>
             <Fouce :index="indexNum"></Fouce>
         </div>
+        <limit></limit>
+        <buying-wrapper></buying-wrapper>
+        
    </div>
    
 </template>
@@ -40,6 +43,8 @@
 import Header from './header.vue'
 import SlideNav from './home/slideNav.vue'
 import Fouce from './home/focus.vue'
+import Limit from './home/limit.vue'
+import BuyingWrapper from './home/buying_pro_wrapper.vue'
 export default {
     data(){
         return {
@@ -101,7 +106,9 @@ export default {
     components:{
         SlideNav,
         Header,
-        Fouce
+        Fouce,
+        Limit,
+        BuyingWrapper
     },
     mounted(){
         this.slideNav=this.$refs.slideNav
@@ -182,6 +189,7 @@ export default {
             height: 215px;
             overflow: hidden;
             position: relative;
+            border-bottom: 4px solid #F5F5F5;
         }
         .slideNav{
             height: 215px;
