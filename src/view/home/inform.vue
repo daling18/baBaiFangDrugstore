@@ -26,27 +26,31 @@ export default {
             ul:null,
             li1:null,
             li2:null,
-            index:0
+            index:0,
+            time:''
         }
     },
     methods:{
         swipwer(){
             this.clon()
 
-            setInterval(()=>{
+           this.time=setInterval(()=>{
                 this.hander()
             },1500)
         },
         hander(){
-            if(this.index===3){
-                this.index=0
-                this.ul.style.transition="all 0s linear"
-                this.ul.style.top=-(this.index*this.li1.clientHeight)+'px'
-                
-            }
-            this.ul.style.transition="all 0.3s linear"
+            
             this.index++
+            this.ul.style.transition="all 0.3s"
             this.ul.style.top=-(this.index*this.li1.clientHeight)+'px'
+           
+            if(this.index>=2){
+                setTimeout(()=>{
+                    this.index=0
+                    this.ul.style.transition="none"
+                    this.ul.style.top=0
+                },300)
+            }
         },
         clon(){
             const li3=this.li1.cloneNode(true)
@@ -90,6 +94,7 @@ export default {
                 ul{
                     position: absolute;
                     // transition: all 0.3s linear;
+                    
                 }
                 li{
                     // position: absolute;
