@@ -44,7 +44,7 @@ export default {
             line-height: 24px;
             font-size: 1.4rem;
             border-radius: 2px;
-            -ms-box-sizing: border-box;
+            // -ms-box-sizing: border-box;
             // box-sizing: border-box;
             outline: none;
             font-family: 'Microsoft YaHei';
