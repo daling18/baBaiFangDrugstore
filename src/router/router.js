@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from "../view/home.vue"
-import Classfig from "../view/classfig.vue"
+import Classfig from "../view/classfigs.vue"
 import Need from "../view/need.vue"
 import Me from "../view/me.vue"
 Vue.use(Router)
