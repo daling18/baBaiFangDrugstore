@@ -1,15 +1,19 @@
 <template>
    
    <div class="me">
-       me
+       <logme></logme>
    </div>
 </template>
 <script>
+import logme from './claLogHeader.vue';
 export default {
     data(){
         return {
             
         }
+    },
+    components:{
+        logme
     }
 }   
 </script>

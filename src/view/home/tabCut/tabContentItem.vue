@@ -1,17 +1,17 @@
 <template>
     <div>
-        <a href="">
-            <img src="http://img.800pharm.com/images/20191105/20191105140925_41.jpg" alt="">
-            <p class="title">他达拉非片 (希爱力) 20毫克*8片</p>
+        <a :href="`http://m.800pharm.com/product-${item.id}.html`">
+            <img :src="item.imgUrl" alt="">
+            <p class="title">{{item.describe}}</p>
             <p class="price">
                ¥
                <big>
-                   589
+                   {{item.nowPrice}}
                </big>
                <span>
                    ¥
                    <del>
-                       999
+                       {{item.deletePrice}}
                    </del>
                </span>
             </p>
@@ -20,7 +20,12 @@
 </template>
 <script>
 export default {
-    
+    props:{
+        item:{
+            type:Object,
+            required:true
+        }
+    }
 }
 </script>
 <style lang="scss" scoped>

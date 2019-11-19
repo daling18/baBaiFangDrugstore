@@ -1,19 +1,35 @@
 <template>
     <div class="buying_pro_wrapper">
         <ul>
-            <item></item>
-            <item></item>
-            <item></item>
-            <item></item>
-            <item></item>
+            <item v-for="item in slidata" :key="item.id">
+                <img :src="item.imgUrl" alt="" slot="img">
+                <p slot="title">{{item.describe}}</p>
+                <span slot="nowPrice">{{item.nowPrice}}</span>
+                <del slot="delPrice">{{item.deletePrice}}</del>
+            </item>
         </ul>
     </div>
 </template>
 <script>
 import item from './buying_pro_wrapper/buyingPwrappeItem.vue'
+
+import axios from '../../network/network';
 export default {
     components:{
         item
+    },
+    created(){
+        axios({
+            url:'/api/slidedata'
+        }).then((data)=>{
+            // console.log(data)
+            this.slidata=data
+        })
+    },
+    data(){
+        return{
+            slidata:null
+        }
     }
 }
 </script>

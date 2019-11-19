@@ -1,7 +1,7 @@
 <template>
     <div class="tab">
-        <tab-header></tab-header>
-        <tab-content></tab-content>
+        <tab-header @cli="cli"></tab-header>
+        <tab-content :cli="index"></tab-content>
     </div>
 </template>
 <script>
@@ -11,6 +11,16 @@ export default {
     components:{
         tabHeader,
         tabContent
+    },
+    data(){
+        return{
+            index:0
+        }
+    },
+    methods:{
+        cli(i){
+            this.index=i
+        }
     }
 }
 </script>

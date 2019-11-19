@@ -2,8 +2,10 @@
   <div id="app">
     <!-- <Header></Header> -->
     <down v-show="frg" @downShow="show"></down>
-    <router-view></router-view>
-    <Footer></Footer>
+    <keep-alive>
+      <router-view></router-view>
+    </keep-alive>
+    <Footer v-if="footerfrg"></Footer>
   </div>
 </template>
 <script>
@@ -15,7 +17,7 @@ export default {
     return {
       msg: "77777",
       frg: true,
-
+      footerfrg:true
     };
   },
   methods: {
@@ -41,6 +43,7 @@ export default {
         }else{
           this.frg=false
         }
+        this.footerfrg=(this.$route.path==='/me')?false:true
       },
       deep:true
     }

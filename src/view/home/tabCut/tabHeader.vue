@@ -1,18 +1,10 @@
 <template>
   <div>
     <ul>
-      <item>
-        <span :class="{active:true}">热卖爆款</span>
+      <item v-for="(item,index) in arr" :key="index">
+        <span :class="{active:index===num}" @click="cut(index)">{{item}}</span>
       </item>
-      <item>
-        <span :class="{active:true}">热卖爆款</span>
-      </item>
-      <item>
-        <span :class="{active:true}">热卖爆款</span>
-      </item>
-      <item>
-        <span :class="{active:true}">热卖爆款</span>
-      </item>
+      
     </ul>
   </div>
 </template>
@@ -21,6 +13,18 @@ import item from "./tabHeaderItem.vue";
 export default {
   components: {
     item
+  },
+  data(){
+    return{
+      arr:['热卖爆款','强壮男神','肝爱健康','营养/保健'],
+      num:0
+    }
+  },
+  methods:{
+    cut(i){
+      this.num=i,
+      this.$emit('cli',i)
+    }
   }
 };
 </script>

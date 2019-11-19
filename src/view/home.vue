@@ -15,9 +15,9 @@
       </Header>
     </div>
     <div class="swipe">
-      <mt-swipe :auto="1000">
-        <mt-swipe-item>
-          <img src="http://img.800pharm.com/images/20190626/20190626102453_151.jpg" alt />
+      <mt-swipe :auto="2000">
+        <mt-swipe-item v-for="(item,index) in bannerUrl" :key="index">
+          <img :src="item[index]" alt />
         </mt-swipe-item>
       </mt-swipe>
     </div>
@@ -61,13 +61,16 @@ import Women from "./home/women.vue";
 import Children from "./home/children.vue";
 import Server from "./home/server.vue";
 import Footer from "./home/footer.vue";
+
+import axios from '../network/network'
 export default {
   data() {
     return {
       slideNav: null,
       startFrag: "",
       left: "",
-      indexNum: 0
+      indexNum: 0,
+      bannerUrl:null
     };
   },
   methods: {
@@ -107,6 +110,8 @@ export default {
         // console.log(this.left)
         this.slideNav.style.left = this.left + "px";
       }
+      this.slideNav.removeEventListener("touchmove", this.move);
+      this.slideNav.removeEventListener("touchend", this.end);
     },
     getOffsetTop(el) {
       let iTop = 0
@@ -158,6 +163,15 @@ export default {
     this.slideNav = this.$refs.slideNav;
     this.slideNav.style.left = 0 + "px";
     this.headerShop()
+  },
+  created(){
+    axios({
+      url:'/api/banner'
+    }).then((data)=>{
+      this.bannerUrl=data
+    }).catch((error)=>{
+      console.log(error)
+    })
   }
 };
 </script>
