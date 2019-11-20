@@ -36,6 +36,8 @@ export default {
         background-color: #00479c;
         position: sticky;
         top: 0;
+        z-index: 2;
+        
         div.right{
            position: absolute;
         //    overflow: hidden;

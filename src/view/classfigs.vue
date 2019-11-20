@@ -1,8 +1,7 @@
 <template>
    <div class="classfig">
        <claheader>
-           <input type="text" slot="input"  placeholder="搜索药品名/症状">
-       
+           <input type="text" slot="input"  placeholder="搜索药品名/症状" @focus="inputFocus">
        </claheader>
         
        <classf></classf>
@@ -24,6 +23,13 @@ export default {
         claheader
     },
     methods:{
+        inputFocus(){
+            this.$router.push({
+                path:'/search'
+            })
+        }
+    },
+    mounted(){
         
     }
 }   
@@ -33,24 +39,7 @@ export default {
         height: calc(100% - 50px);
         width: 100%;
         background-color: #F2F2F2;
-        input[type="text"]{
-            border: none;
-            background-color: #fff;
-            color: #666;
-            // width: 100%;
-            width: 258px;
-            height: 34px;
-            padding: 0 12px;
-            line-height: 24px;
-            font-size: 1.4rem;
-            border-radius: 2px;
-            // -ms-box-sizing: border-box;
-            // box-sizing: border-box;
-            outline: none;
-            font-family: 'Microsoft YaHei';
-            vertical-align: middle;
-            margin-top: 8px;
-        }
+        
     }
    
 </style>

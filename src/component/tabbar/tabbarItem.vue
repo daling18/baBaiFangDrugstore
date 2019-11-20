@@ -16,7 +16,7 @@ export default {
     methods:{
         tabClick(){
             // console.log(this.path)
-            if(this.$route.path===this.path||!(this.path)){
+            if(this.$route.path.indexOf(this.path)!==-1||!(this.path)){
                 return
             }
             this.$router.push({path:this.path})

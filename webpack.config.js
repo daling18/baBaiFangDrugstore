@@ -9,7 +9,8 @@ module.exports = {
     entry: path.resolve(__dirname, './src/main.js'),
     output: {
         filename: 'main.js',
-        path: path.resolve(__dirname, 'dist')
+        path: path.resolve(__dirname, 'dist'),
+        publicPath:'/'
     },
     devtool:"source-map",
     module: {
@@ -60,10 +61,10 @@ module.exports = {
     },
     devServer: {
         contentBase: path.resolve(__dirname, 'dist'),
-        host: '10.9.67.231',
+        host: '0.0.0.0',
         open: true,
         historyApiFallback: { //把history index.html
-            index: "/index.html"
+            index: "/index.html",
         },
         proxy: {
             '/api': {

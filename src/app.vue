@@ -3,8 +3,11 @@
     <!-- <Header></Header> -->
     <down v-show="frg" @downShow="show"></down>
     <keep-alive>
+
       <router-view></router-view>
     </keep-alive>
+    
+    
     <Footer v-if="footerfrg"></Footer>
   </div>
 </template>
@@ -43,7 +46,7 @@ export default {
         }else{
           this.frg=false
         }
-        this.footerfrg=(this.$route.path==='/me')?false:true
+        this.footerfrg=(this.$route.path.indexOf('/me')!==-1)?false:true
       },
       deep:true
     }
