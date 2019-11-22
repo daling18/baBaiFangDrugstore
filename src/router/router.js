@@ -6,6 +6,7 @@ import Need from "../view/need.vue"
 import Me from "../view/me.vue"
 import Search from '../view/search.vue';
 import List from '../view/list.vue';
+import Details from '../view/details.vue';
 
 import Login from '../view/me/mianLogin.vue';
 import Singin from '../view/me/singin.vue';
@@ -54,6 +55,10 @@ export default new Router(
             {
                 path:'/list',
                 component:List
+            },
+            {
+                path:'/details',
+                component:Details
             }
 
         ]

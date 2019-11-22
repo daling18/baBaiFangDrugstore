@@ -7,6 +7,7 @@
                     <a href="" class="kefu"></a>
                     <a href="" class="daohang" @click.prevent="frag=!frag"></a>
                 </div>
+                <slot name="detailsHot" slot="detailsHot"></slot>
             </class-header>
             <slot><class-nav v-show="frag"></class-nav></slot>
        </div>

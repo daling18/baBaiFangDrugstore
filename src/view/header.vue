@@ -1,9 +1,10 @@
 <template>
    
-    <div class="header">
+    <div class="headers">
         <div class="left"><slot name="left"></slot></div>
         <div class="center"><slot name="center"></slot></div>
         <div class="right"><slot name="right"></slot></div>
+        <slot name="detailsHot"></slot>
     </div>
 </template>
 <script>
@@ -16,10 +17,12 @@ export default {
 }   
 </script>
 <style lang="scss" scoped>
-    .header{
+    .headers{
         height: 50px;
         display: flex;
         // background-color: blue;
+        position: relative;
+        // overflow: hidden;
         
         .left{
             width: 48px;
@@ -28,6 +31,7 @@ export default {
         .right{
             width: 60px;
              position: relative;
+             clear: both;
         }
         .center{
             flex: 1;
