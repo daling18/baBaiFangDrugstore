@@ -1,14 +1,18 @@
 <template>
     <div class="goodsname">
         <i>RX</i>
-        <h1>10盒优惠装 东泰 华蟾素胶囊18粒装 解毒，消肿，止痛。临床主要用于中、晚期肿瘤的治疗，亦可用于慢性乙型肝炎等症</h1>
+        <h1>{{dataobj.name}}</h1>
         <div>本品属于处方药，需凭处方购买</div>
     </div>
 
 </template>
 <script>
 export default {
-    
+    computed:{
+        dataobj(){
+            return this.$store.state.detailsData
+        }
+    }
 }
 </script>
 <style lang="scss" scoped>

@@ -15,29 +15,40 @@
         </form>
       </search-header>
     </div>
-    <hot-search></hot-search>
-    <History></History>
+    <div v-show="!frag">
+      <hot-search></hot-search>
+      <History></History>
+    </div>
+    <search-show v-show="frag" :searchData="searchData"></search-show>
   </div>
 </template>
 <script>
 import searchHeader from "./header.vue";
 import hotSearch from "./search/hotSearch.vue";
 import History from "./search/history.vue";
+import searchShow from './search/searchShow.vue';
 
 import axios from "../network/network.js";
 export default {
   components: {
     searchHeader,
     hotSearch,
-    History
+    History,
+    searchShow
   },
   data() {
     return {
-      value: ""
+      value: "",
+      frag:false,
+      searchData:[]
     };
   },
   watch: {
     value() {
+      if(!this.value){
+        this.searchData=[]
+        return
+      }
       axios({
         url: "/api/search",
         params: {
@@ -45,7 +56,15 @@ export default {
         }
       }).then(res => {
         console.log(res);
+        this.searchData=res
       });
+    },
+    searchData(){
+      if(this.searchData.length){
+        this.frag=true
+      }else{
+        this.frag=false
+      }
     }
   },
   methods: {
@@ -53,8 +72,16 @@ export default {
       this.$router.back();
     },
     search() {
+      if(!this.value){
+        alert('请输入搜索关键字')
+        return
+      }
+      // this.$store.commit('listData',this.searchData)
       this.$router.push({
-        path: "/list"
+        path: "/list",
+        query:{
+          key:this.value
+        }
       });
     }
   },

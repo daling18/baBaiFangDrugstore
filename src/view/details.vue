@@ -11,7 +11,7 @@
         <promotion>
             <span slot="title">更多</span>
             <div class="s_infos" id="select">
-                250mg*6粒*3板/盒  ，
+                {{dataobj.type}}，
                 <span>
                     请选择数量
                 </span>
@@ -37,11 +37,17 @@ import goodsShow from './details/goodsShow.vue';
 import shade from '../component/shade/shade.vue';
 import TopSlid from './details/TopSlid.vue';
 import detailFooter from './details/detailFooter.vue';
-
+import axios from '../network/network';
 export default {
     data(){
         return{
-            shadeShow:false
+            shadeShow:false,
+            // objData:{}
+        }
+    },
+    computed:{
+        dataobj(){
+            return this.$store.state.detailsData
         }
     },
     components:{
@@ -66,6 +72,17 @@ export default {
             this.shadeShow=!this.shadeShow
         },
         
+    },
+    activated(){
+        console.log(this.$route)
+        axios({
+            url:'/api/details',
+            params:{
+                id:this.$route.query.id
+            }
+        }).then((res)=>{
+            this.$store.commit('detailsData',res[0])
+        })
     }
 
 }

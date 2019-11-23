@@ -1,7 +1,8 @@
 <template>
     <div class="show">
         <div class="name">
-            <h3>广州善邻药业
+            <h3>
+                {{dataobj.company}}
                 <em></em>
             </h3>
             <div>
@@ -20,7 +21,11 @@
 </template>
 <script>
 export default {
-    
+    computed:{
+        dataobj(){
+            return this.$store.state.detailsData
+        }
+    }
 }
 </script>
 <style lang="scss" scoped>

@@ -6,8 +6,8 @@
        <slot name="dd">
            <dd class="prices">
                 <i></i>
-                <span class="cxj">¥1029</span>
-                <span class="yj">¥1500</span>
+                <span class="cxj">{{dataobj.nowPrice}}</span>
+                <span class="yj">{{dataobj.nowPrice}}</span>
                 <span class="pay">货到付款</span>
             </dd>
        </slot>
@@ -15,7 +15,11 @@
 </template>
 <script>
 export default {
-    
+    computed:{
+        dataobj(){
+            return this.$store.state.detailsData
+        }
+    }
 }
 </script>
 <style lang="scss" scoped>

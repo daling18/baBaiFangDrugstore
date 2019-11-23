@@ -1,17 +1,17 @@
 <template>
     <a href="">
         <div class="img">
-            <img src="http://img.800pharm.com/images/20160929/20160929092438_753.jpg" alt="">
+            <img :src="itemData.imgUrl" alt="">
         </div>
         <div class="detail">
             <span class="rx">
                 Rx
             </span>
-            <p class="goodsName"> 八宝惊风散 </p>
-            <p class="merchant">  江西省芙蓉药业有限公司  </p>
-            <p class="type"> 0.26g*10支/盒 </p>
+            <p class="goodsName"> {{itemData.name}} </p>
+            <p class="merchant">  {{itemData.company}}  </p>
+            <p class="type">{{itemData.type}} </p>
             <p class="price"> 
-                <span>¥8.00</span>起
+                <span>{{itemData.nowPrice}}</span>起
             </p>
             <p class="standard">
                 4家药店发布 >>
@@ -21,7 +21,14 @@
 </template>
 <script>
 export default {
-    
+    props:{
+        itemData:{
+            type:Object,
+            default(){
+                return {}
+            }
+        }
+    }
 }
 </script>
 <style lang="scss" scoped>

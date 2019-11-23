@@ -11,12 +11,26 @@ import listHeader from './claLogHeader.vue';
 import listnav from './list/listNav.vue';
 import listBanner from './list/listBanner.vue';
 import listGoods from './list/listGoods.vue';
+
+import axios from '../network/network';
 export default {
     components:{
         listHeader,
         listnav,
         listBanner,
         listGoods
+    },
+    activated(){
+        
+        axios({
+        url: "/api/search",
+        params: {
+          value: this.$route.query.key
+        }
+      }).then(res => {
+        console.log(res);
+        this.$store.commit('listData',res)
+      });
     }
 }
 </script>

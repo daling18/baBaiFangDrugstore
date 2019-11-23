@@ -7,7 +7,7 @@
           <img src="http://m.800pharm.com/images/wap/icon_logo.png" alt />
         </div>
         <div slot="center" class="center">
-          <input type="text" placeholder="金戈" />
+          <input type="text" placeholder="金戈" id="home" />
         </div>
         <div slot="right" class="right">
           <a href>登录</a>
@@ -125,8 +125,9 @@ export default {
     headerShop() {
         window.onscroll=()=>{
             const top=document.documentElement.scrollTop||document.body.scrollTop
+            // console.log(this.getOffsetTop(this.$refs.header))
             if(this.getOffsetTop(this.$refs.header)-top<=0){
-                this.$refs.header.style.position='sticky'
+                this.$refs.header.style.position='fixed'
                 this.$refs.header.style.backgroundColor='#00479c'
             }else{
                 this.$refs.header.style.position='absolute'
@@ -182,6 +183,7 @@ export default {
   padding-bottom: 49px;
   .left {
     // width: 63px;
+    // position: fixed
     height: 30px;
     position: absolute;
     left: 0.9rem;
@@ -211,12 +213,12 @@ export default {
       }
     }
   }
-  .center {
+  div.center {
     margin-left: 38px;
     color: #fff;
     font-size: 1.6rem;
     line-height: 48px;
-    input {
+    input#home {
       width: 102%;
       height: 34px;
       border-radius: 17px;
@@ -226,7 +228,7 @@ export default {
       font-size: 1.4rem;
       box-sizing: border-box;
       padding: 0 12px;
-      // margin-top: -2px
+      margin-top: -2px
     }
   }
   .right {
