@@ -7,10 +7,11 @@
           <img src="http://m.800pharm.com/images/wap/icon_logo.png" alt />
         </div>
         <div slot="center" class="center">
-          <input type="text" placeholder="金戈" id="home" />
+          <input type="text" placeholder="金戈" id="home" @focus="$router.push('/search')"/>
         </div>
         <div slot="right" class="right">
-          <a href>登录</a>
+          <a v-if="!$store.state.name" href="/me/login">登录</a>
+          <a v-else href="/me/login" class="personcenter"><i></i></a>
         </div>
       </Header>
     </div>
@@ -115,17 +116,17 @@ export default {
     },
     getOffsetTop(el) {
       let iTop = 0
-      do {
+      while (el.parentNode){
         iTop += el.offsetTop; //如果是左侧就是offsetLeft
         
         el = el.parentNode; //如果DOM 节点 的parentNode存在，把当前的节点赋予成parentNode；
-      } while (el.parentNode);
+      } 
       return iTop
     },
     headerShop() {
         window.onscroll=()=>{
             const top=document.documentElement.scrollTop||document.body.scrollTop
-            // console.log(this.getOffsetTop(this.$refs.header))
+            console.log(this.getOffsetTop(this.$refs.header))
             if(this.getOffsetTop(this.$refs.header)-top<=0){
                 this.$refs.header.style.position='fixed'
                 this.$refs.header.style.backgroundColor='#00479c'
@@ -163,7 +164,9 @@ export default {
   mounted() {
     this.slideNav = this.$refs.slideNav;
     this.slideNav.style.left = 0 + "px";
+    
     this.headerShop()
+    
   },
   created(){
     axios({
@@ -181,6 +184,17 @@ export default {
 .home {
   position: relative;
   padding-bottom: 49px;
+  .right{
+    a.personcenter{
+      i{
+        width: 30px;
+        height: 30px;
+        display: inline-block;
+        background: url(http://m.800pharm.com/images/wap/icon_center.png) no-repeat;
+        background-size: contain;
+      }
+    }
+  }
   .left {
     // width: 63px;
     // position: fixed

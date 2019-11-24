@@ -38,7 +38,10 @@ import shade from '../component/shade/shade.vue';
 import TopSlid from './details/TopSlid.vue';
 import detailFooter from './details/detailFooter.vue';
 import axios from '../network/network';
+
+import mixin from '../mixin/mixin';
 export default {
+    mixins:[mixin],
     data(){
         return{
             shadeShow:false,
@@ -73,12 +76,14 @@ export default {
         },
         
     },
-    activated(){
-        console.log(this.$route)
+    created(){
+
+        const id=this.$route.query.id
+        this.setlocalStorage('history',id)
         axios({
             url:'/api/details',
             params:{
-                id:this.$route.query.id
+                id
             }
         }).then((res)=>{
             this.$store.commit('detailsData',res[0])

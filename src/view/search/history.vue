@@ -5,13 +5,34 @@
             <a href="javascript:;">清除</a>
         </div>
         <div class="cone">
-            <a href="">大豆磷脂软胶囊</a>
+            <a :href="`/details?id=${item.id}`" v-for="(item) in arr" :key="item.id">{{item.name}}</a>
         </div>
     </div>
 </template>
 <script>
+import axios from '../../network/network';
+import mixin from '../../mixin/mixin';
 export default {
-    
+    mixins:[mixin],
+    data(){
+        return{
+            arr:[]
+        }
+    },
+    created(){
+        this.getlocalStorage('history').forEach((id)=>{
+            axios({
+                method:'get',
+                url:'/api/details',
+                params:{
+                    id
+                }
+            }).then((res)=>{
+                this.arr.push(res[0])
+            })
+        })
+        
+    }
 }
 </script>
 <style lang="scss" scoped>

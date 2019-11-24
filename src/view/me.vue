@@ -1,7 +1,7 @@
 <template>
    
    <div class="me">
-        <logme-header><span slot="input">{{mag}}</span></logme-header>
+        <logme-header><span slot="input">{{$route.meta.tite}}</span></logme-header>
        <router-view>
            
        </router-view>
@@ -11,33 +11,14 @@
 <script>
 import login from './me/mianLogin.vue';
 import logmeHeader from './claLogHeader.vue';
+import createdMixin from '../mixin/createdMixin';
 export default {
-    data(){
-        return {
-            mag:'登录'
-        }
-    },
+
+    mixins:[createdMixin],
     components:{
         logmeHeader,
         login
     },
-    activated(){
-        this.$router.replace({
-            path:'/me/login'
-        })
-    },
-    watch:{
-        '$route':{
-            handler(){
-            if(this.$route.path==='/me/singin'){
-                this.mag='注册'
-            }else{
-                this.mag='登录'
-            }
-            },
-            deep:true
-        }
-    }
 }   
 </script>
 <style lang="scss" scoped>
@@ -50,7 +31,7 @@ export default {
             color: #fff;
             display: block;
             height: 50px;
-            width: 50px;
+            width: 80px;
             line-height: 50px;
         }
     }

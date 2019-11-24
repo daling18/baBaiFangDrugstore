@@ -3,13 +3,13 @@
     <div class="header">
       <search-header>
         <a href slot="left" @click.prevent="back"></a>
-        <form action slot="center">
+        <form slot="center" >
           <input
             type="text"
             placeholder="搜索药品名/症状"
             ref="input"
             v-model="value"
-            @keydown.enter="search"
+            @keydown.stop.13.prevent="search"
           />
           <input type="button" />
         </form>
@@ -69,7 +69,9 @@ export default {
   },
   methods: {
     back() {
+      
       this.$router.back();
+
     },
     search() {
       if(!this.value){
@@ -85,7 +87,7 @@ export default {
       });
     }
   },
-  activated() {
+  mounted() {
     this.$refs.input.focus();
   }
 };

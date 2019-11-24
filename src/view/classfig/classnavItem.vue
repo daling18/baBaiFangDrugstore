@@ -1,5 +1,5 @@
 <template>
-    <router-link class="a"  :to="item.url" :style="{backgroundImage:`url(${item.backImg})`}">{{item.mag}}</router-link>
+    <a class="a" @click.prevent="clickD(item.url)" :style="{backgroundImage:`url(${item.backImg})`}">{{item.mag}}</a>
 </template>
 <script>
 export default {
@@ -8,6 +8,13 @@ export default {
             type:Object,
             required:true
         }
+    },
+    methods:{
+        clickD(url){
+        this.$router.push({
+            path:url
+        })
+    }
     }
 }
 </script>

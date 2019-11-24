@@ -31,7 +31,7 @@ export default {
                 {
                     mag:'个人中心',
                     backImg:'http://m.800pharm.com/images/wap/icon_member.png',
-                    url:'/me'
+                    url:'/me/login'
                 }
             ]
         }

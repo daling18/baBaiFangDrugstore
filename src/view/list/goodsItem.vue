@@ -1,5 +1,5 @@
 <template>
-    <a href="">
+    <a :href="'/details?id='+itemData.id">
         <div class="img">
             <img :src="itemData.imgUrl" alt="">
         </div>

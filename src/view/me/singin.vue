@@ -1,17 +1,60 @@
 <template>
     <div class="singinInput">
-        <singin-input></singin-input>
-        <div class="botton"><sing-button>注册</sing-button></div>
+        <singin-input @namepass="namepass"></singin-input>
+        <div class="botton" @click="singin"><sing-button>注册</sing-button></div>
 
     </div>
 </template>
 <script>
 import singinInput from '../../component/input/input.vue';
 import singButton from './button.vue';
+
+import { MessageBox } from 'mint-ui';
+import axios from '../../network/network';
+import createdMixin from '../../mixin/createdMixin';
 export default {
     components:{
         singinInput,
         singButton
+    },
+    mixins:[createdMixin],
+    data(){
+        return{
+            user:{}
+        }
+    },
+
+    methods:{
+        singin(){
+            if(!this.user.name||!this.user.pass){
+                MessageBox('提示', '请输入用户名或密码');
+                return
+            }
+            axios({
+                method:'post',
+                url:'/api/singin',
+                data:{
+                    name:this.user.name,
+                    pass:this.user.pass
+                }
+            }).then((res)=>{
+                if(res===1){
+                    MessageBox('提示', '注册成功').then(()=>{
+                        this.$router.push({
+                            path:'/me/login'
+                        })
+                    });
+                }else if(res===0){
+                    MessageBox('提示', '注册失败');
+                }else{
+                    MessageBox('提示', '用户名已存在')
+                    
+                }
+            })
+        },
+        namepass(user){
+            this.user=user
+        }
     }
 }
 </script>

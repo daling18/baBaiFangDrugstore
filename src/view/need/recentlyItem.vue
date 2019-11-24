@@ -1,17 +1,31 @@
 <template>
     <li>
-        <a href="">
+        <a @click.prevent="click">
             <div class="goods-img">
-                <img src="http://img.800pharm.com/images//pms/upload/images/original/072019/16133/bf6f17617d7ac13b766749c7f341d5bd1bc24260.png" alt="">
+                <img :src="itemData.imgUrl" alt="">
             </div>
-            <div class="goods-title">力合健 一次性使用口罩(粉红）50只</div>
-            <div class="goods-price">¥9.9</div>
+            <div class="goods-title">{{itemData.name}}</div>
+            <div class="goods-price">{{itemData.nowPrice}}</div>
         </a>
     </li>
 </template>
 <script>
 export default {
-    
+    props:{
+        itemData:{
+            type:Object,
+            default(){
+                return{}
+            }
+        }
+    },
+    methods:{
+        click(){
+            this.$router.push({
+                path:`/details?id=${this.itemData.id}`
+            })
+        }
+    }
 }
 </script>
 <style lang="scss" scoped>

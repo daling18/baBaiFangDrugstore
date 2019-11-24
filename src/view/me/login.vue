@@ -1,6 +1,6 @@
 <template>
     <div class="inputcom">
-        <input-com>
+        <input-com @namepass="namepass">
             <label slot="name" for="name"> 账号：</label>
             <label slot="pass" for="pass"> 密码：</label>
             <i slot="eye" class="eyes_icon"></i>
@@ -14,7 +14,7 @@
                     </router-link>
                 </anniu>
             </div>
-            <div class="login">
+            <div class="login" @click="login">
                 <anniu>登录</anniu>
             </div>
         </div>
@@ -24,10 +24,63 @@
 <script>
 import inputCom from '../../component/input/input.vue' 
 import anniu from './button.vue';
+
+import axios from '../../network/network';
+import { MessageBox } from 'mint-ui';
+// import createdMixin from '../../mixin/createdMixin';
 export default {
     components:{
         inputCom,
         anniu
+    },
+    // mixins:[createdMixin],
+    data(){
+        return{
+            user:{}
+        }
+    },
+    methods:{
+        namepass(user){
+            
+            this.user=user
+        },
+        login(){
+            if(!this.user.name||!this.user.pass){
+                MessageBox('提示', '请输入用户名或密码');
+                return
+            }
+            axios({
+                method:'post',
+                url:'/api/login',
+                data:{
+                    name:this.user.name,
+                    pass:this.user.pass
+                }
+            }).then((res)=>{
+                console.log(res)
+                if(res===2){
+                    MessageBox('提示', '你还没有注册');
+                }else if(res===5){
+                     MessageBox('提示', '密码错误');
+                }else{
+                    axios({
+                        method:'post',
+                        url:'/api/session'
+                    }).then((res)=>{
+                        if(res===7||res===8){
+                        this.$store.commit('name','')
+                        }else{
+                        this.$store.commit('name',res)
+                        }
+                        this.$router.push({
+                        path:'/me/logSucceed'
+                        })
+                    })
+                    
+                }
+                
+            })
+        }
     }
 }
 </script>

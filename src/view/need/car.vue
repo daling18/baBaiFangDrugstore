@@ -1,8 +1,8 @@
 <template>
     <div class="car">
         <p class="first-point-text">主人，购物车还是空空的</p>
-        <p class="btn-box"><a href="">去购物</a></p>
-        <p class="last-point-text">
+        <p class="btn-box"><a href="/search">去购物</a></p>
+        <p class="last-point-text" v-if="!$store.state.name">
             登录后可同步电脑和手机端购物车
             <a href="">登录</a>
         </p>

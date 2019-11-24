@@ -2,18 +2,35 @@
     <div class="inputs_box">
         <div class="name">
             <slot name="name"></slot>
-            <input type="text" id="name" placeholder="请输入您的手机号码/邮箱">
+            <input type="text" id="name" placeholder="请输入您的手机号码/邮箱" v-model="user.name">
         </div>
         <div class="pass">
             <slot name="pass"></slot>
-            <input type="text" id="pass" placeholder="请输入密码" minlength="6" maxlength="16">
+            <input type="password" id="pass" placeholder="请输入密码" minlength="6" maxlength="16" v-model="user.pass">
             <slot name="eye"></slot>
         </div>
     </div>
 </template>
 <script>
 export default {
-    
+    data(){
+        return{
+            user:{
+                name:'',
+                pass:'',
+            }
+        }
+    },
+    watch:{
+        user:{
+           handler(){
+                this.$emit('namepass',this.user)
+            },
+            deep:true
+        }
+        
+        
+    }
 }
 </script>
 <style lang="scss" scoped>

@@ -27,7 +27,17 @@ export default {
     },
     methods:{
         back(){
-            this.$router.back()
+           
+            if(this.$store.state.name&&this.$route.path==='/me/logSucceed'){
+                
+                this.$router.push({
+                    path:'/home'
+                })
+            }else{
+                 console.log(this.$route.path,this.$store.state.name)
+                this.$router.go(-1)
+            }
+            
         }
     }
 }

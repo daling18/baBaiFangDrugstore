@@ -12,7 +12,7 @@
         <tabbar-item :backPositon="{'backgroundPosition':'0 0px'}" path='/need'>
             <div>需求清单</div>
         </tabbar-item>
-        <tabbar-item :backPositon="{'backgroundPosition':'0 -165px'}" path='/me'>
+        <tabbar-item :backPositon="{'backgroundPosition':'0 -165px'}" path='/me/login'>
             <div>我的</div>
         </tabbar-item>
     </div>

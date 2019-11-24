@@ -13,7 +13,7 @@ export default {
 <style lang="scss" scoped>
     .listnav{
         overflow: hidden;
-        border-bottom: 10px solid #F5F5F5;
+        
         a{
             display: block;
             width: 33.3%;
