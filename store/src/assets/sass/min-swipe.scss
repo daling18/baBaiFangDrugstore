@@ -1,0 +1,21 @@
+.swipe .mint-swipe-indicators>.mint-swipe-indicator,.content .mint-swipe-indicators>.mint-swipe-indicator{
+                    
+    background-color: #fff;
+    width: 18px;
+    height: 3px;
+    opacity: 1;
+ 
+}
+.content .mint-swipe-indicators>.mint-swipe-indicator.is-active,.swipe .mint-swipe-indicators>.mint-swipe-indicator.is-active, .slide .mint-swipe-indicator.is-active{
+    background: #e6186f;
+}
+
+.content>.mint-swipe>.mint-swipe-indicators{
+   transform: translateY(30px);
+}
+.content .mint-swipe-indicators>.mint-swipe-indicator{
+    background-color: #dedede;
+}
+.home .swipe .mint-swipe .mint-swipe-indicators{
+    width: 240px;
+}

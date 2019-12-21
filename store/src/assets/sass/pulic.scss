@@ -1,0 +1,26 @@
+body,html{
+    margin: 0;
+    padding: 0;
+    font-size: 62.5%;
+    font-family: 'Microsoft YaHei', Helvetica, Arial;
+    height: 100%;
+    width: 100%;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+ul,ol,li,dl,dt,dd{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+    outline: none;
+}
+input{
+    outline: none;
+    border: 0;
+}
+i{
+    font-style: normal;
+}
